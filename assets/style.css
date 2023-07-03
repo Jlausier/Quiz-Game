@@ -1,10 +1,65 @@
+*{
+    
+}
+
+
+
 h1{
     text-align: center;
     font-size: 250%;
     color: darkblue
 }
+nav button{
+    display: flex;
+    position: absolute;
+   left: 45%;
+    font-size: 200%;
+    color: rgb(57, 208, 224)
+}
 
 nav a{
+   
     font-size: 150%;
     padding: 4%;
+}
+
+section{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    
+
+}
+ section ul li{
+    display: none;
+    justify-content: center;
+    list-style: none;
+    font-style: bolder;
+    font-size: 125%;
+ }
+
+ .button{
+    display: none;
+    font-size: 30px;
+    margin: 25%;
+    background-image: linear-gradient(
+rgba(135, 39, 226) 0%,
+rgba(93, 24, 158 ) 100%
+    );
+ }
+.question{
+    display: none;
+    font-size: 35px;
+    background-image: linear-gradient(
+        rgba(135, 39, 226) 0%,
+        rgba(93, 24, 158 ) 100%
+            );
+}
+
+.button1{
+    background-image: linear-gradient(
+        rgba(135, 39, 226) 0%,
+        rgba(93, 24, 158 ) 100%
+            );
+
 }

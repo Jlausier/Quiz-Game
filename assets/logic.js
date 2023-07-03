@@ -29,3 +29,103 @@
 
 // write response and time remaining value to local storage
 /////////////////
+
+//all the variables
+
+var  start = document.getElementById("startButton");
+var question = document.getElementById("Q");
+var answerA = document.getElementById("A");
+var answerB = document.getElementById("B");
+var answerC = document.getElementById("C");
+var answerD = document.getElementById("D");
+var timerEl = document.getElementById("countdown")
+
+var button1 = document.querySelector("nav button")
+
+var timeLeft = 100
+
+
+// start the quiz with event listner
+start.addEventListener("click", function(){
+    var displayQuestion = question.style.display;
+        if(displayQuestion == "none"){
+        question.style.display = "flex";
+        } else{
+        question.style.display = "none";
+        }
+
+       
+
+    var displayAnswers = answerA.style.display;
+        if(displayAnswers == "none"){
+        answerA.style.display = "flex";
+        } else{
+        answerA.style.display = "none";
+        }
+    var displayAnswers = answerB.style.display;
+        if(displayAnswers == "none"){
+        answerB.style.display = "flex";
+        } else{
+        answerB.style.display = "none";
+        }
+    var displayAnswers = answerC.style.display;
+        if(displayAnswers == "none"){
+        answerC.style.display = "flex";
+        } else{
+        answerC.style.display = "none";
+        }
+    var displayAnswers = answerD.style.display;
+        if(displayAnswers == "none"){
+        answerD.style.display = "flex";
+        } else{
+        answerD.style.display = "none";
+        }
+    
+
+
+    var displayStart = button1.style.display;
+        if(displayStart == "flex"){
+            button1.style.display = "none"
+        } else {
+            button1.style.display = "flex"
+        }
+        
+    
+
+        function populateQ() {
+            var Q1 = question.textContent;
+        
+            if (Q1 == "Questions") {
+                question.textContent = questions[0];
+            } else{
+                question.textContent = "Question";
+            }
+            console.log(question);
+        }
+
+    populateQ()
+
+ var timeInterval= setInterval(function(){
+    timeLeft--;
+    timerEl.textContent = "Timer: " + timeLeft;
+
+    if (timeLeft === 0){
+        clearInterval(timeInterval);
+
+        start();
+
+    }
+ }, 1000);
+    })
+   
+
+    function populateQ() {
+        var Q1 = question.textContent;
+    
+        if (Q1 == "Questions") {
+            question.textContent = questions[0];
+        } else{
+            question.textContent = "Question";
+        }
+        console.log(question);
+    }
