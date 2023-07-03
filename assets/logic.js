@@ -32,100 +32,112 @@
 
 //all the variables
 
-var  start = document.getElementById("startButton");
-var question = document.getElementById("Q");
-var answerA = document.getElementById("A");
-var answerB = document.getElementById("B");
-var answerC = document.getElementById("C");
-var answerD = document.getElementById("D");
-var timerEl = document.getElementById("countdown")
-
-var button1 = document.querySelector("nav button")
-
-var timeLeft = 100
+const startButton = document.getElementById('start-btn')
+const nextButton = document.getElementById('next-btn')
+const questionContainerEl = document.getElementById('question-container')
 
 
-// start the quiz with event listner
-start.addEventListener("click", function(){
-    var displayQuestion = question.style.display;
-        if(displayQuestion == "none"){
-        question.style.display = "flex";
-        } else{
-        question.style.display = "none";
-        }
+const questionEl = document.getElementById('question')
+const answersButtonEl = document.getElementById('answer-buttons')
 
-       
-
-    var displayAnswers = answerA.style.display;
-        if(displayAnswers == "none"){
-        answerA.style.display = "flex";
-        } else{
-        answerA.style.display = "none";
-        }
-    var displayAnswers = answerB.style.display;
-        if(displayAnswers == "none"){
-        answerB.style.display = "flex";
-        } else{
-        answerB.style.display = "none";
-        }
-    var displayAnswers = answerC.style.display;
-        if(displayAnswers == "none"){
-        answerC.style.display = "flex";
-        } else{
-        answerC.style.display = "none";
-        }
-    var displayAnswers = answerD.style.display;
-        if(displayAnswers == "none"){
-        answerD.style.display = "flex";
-        } else{
-        answerD.style.display = "none";
-        }
-    
+let shuffleQuestions, currentQuestionIndex
 
 
-    var displayStart = button1.style.display;
-        if(displayStart == "flex"){
-            button1.style.display = "none"
-        } else {
-            button1.style.display = "flex"
-        }
-        
-    
+startButton.addEventListener('click',startgame)
+nextButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    setNextQuestion()
+})
 
-        function populateQ() {
-            var Q1 = question.textContent;
-        
-            if (Q1 == "Questions") {
-                question.textContent = questions[0];
-            } else{
-                question.textContent = "Question";
-            }
-            console.log(question);
-        }
 
-    populateQ()
+function startgame(){
+startButton.classList.add('hide')
+shuffleQuestions = questions.sort(() => Math.random()- .5)
+currentQuestionIndex = 0
+questionContainerEl.classList.remove('hide')
+setNextQuestion()
+}
 
- var timeInterval= setInterval(function(){
-    timeLeft--;
-    timerEl.textContent = "Timer: " + timeLeft;
-
-    if (timeLeft === 0){
-        clearInterval(timeInterval);
-
-        start();
+function setNextQuestion(){
+    resetState()
+    showQuestion(shuffleQuestions[currentQuestionIndex])
 
     }
- }, 1000);
+
+
+function showQuestion(question){
+questionEl.innerText = question.question
+question.answers.forEach(answer => {
+    const button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+    if (answer.correct){
+       button.dataset.correct =answer.correct
+    }
+    button.addEventListener('click', selectAnswer)
+    answersButtonEl.appendChild(button)
     })
-   
+}
 
-    function populateQ() {
-        var Q1 = question.textContent;
-    
-        if (Q1 == "Questions") {
-            question.textContent = questions[0];
-        } else{
-            question.textContent = "Question";
-        }
-        console.log(question);
+function resetState(){
+    clearStatusClass(document.body)
+    nextButton.classList.add('hide')
+    while(answersButtonEl.firstChild){
+        answersButtonEl.removeChild
+        (answersButtonEl.firstChild)
     }
+}
+
+
+function selectAnswer(e){
+ const selectedButton = e.target
+ const correct = selectedButton.dataset.correct
+ setStatusClass(document.body, correct)
+ Array.from(answersButtonEl.children).forEach(button => {
+    setStatusClass(button, button.dataset.correct)
+ })
+ if(shuffleQuestions.length > currentQuestionIndex + 1){
+    nextButton.classList.remove('hide')
+ } else {
+    startButton.innerText = "Restart"
+    startButton.classList.remove('hide')
+ }
+ 
+}
+
+
+function setStatusClass(element, correct){
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+    }
+}
+
+
+function clearStatusClass(element){
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
+
+
+const questions = [
+    {
+        question: "What is the tree called where we can interact with the entire webpage?" ,
+        answers: [
+         {text: "palm tree", correct: false},
+         {text: "yggdrisil", correct: false},
+         {text: "the dom tree", correct: true},
+         {text: "the html tree", correct: false}]
+
+    },
+    {
+        question: "What command can we input into git bash to check if we are up to date with the github repository?",
+        answers: [
+            {text: "git Status", correct: true},
+            {text: "git pull", correct: false},
+            {text: "git push origin main", correct: false},
+            {text: "git checkout", correct:false}]
+    }
+]

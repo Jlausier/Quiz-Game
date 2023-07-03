@@ -3,30 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz-game</title>
     <link rel="stylesheet" href="assets/style.css">
-</head>
+    <script defer src="assets/logic.js"></script>
+    <title>Quiz App</title>
+    <nav class="card">
+        <a href="#ViewHighscore">View highscores</a>
+    </nav>
+    <h1>Welcome to my Quizz App</h1>
 <body>
-    <main>
-        <h1>Welcome to the Quiz-game</h1>
-        <nav>
-            <a href="#View-Highscores"> View High Scores</a>
-            <button class= button1 id="startButton">Start the Quiz</button>
-        </nav>
-        <h2 id="coundown"></h2>
-        <section>
-            <ul>
-                <li class= question id="Q"> Questions</li>
-                <button class= button id="A"> A:</button>
-                <button class= button id="B"> B:</button>
-                <button class= button id="C"> C:</button>
-                <button class= button id="D"> D:</button>
-            </ul>
-        </section>
-        
-    </main>
-    <script src="assets/logic.js"> </script>
-    <script src="assets/questions.js"></script>
-    <script src="assets/scores.js"></script>
+    <div class="container">
+        <div id=question-container class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button clas="btn">Answer 1</button>
+                <button clas="btn">Answer 2</button>
+                <button clas="btn">Answer 3</button>
+                <button clas="btn">Answer 4</button>
+            </div>
+        </div>
+        <div class="controls">
+            <button id ="start-btn" class="start-btn btn">Start</button>
+            <button id = "next-btn" class="next-btn btn hide">Next</button>
+        </div>
+    </div>
 </body>
 </html>
