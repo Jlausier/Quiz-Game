@@ -134,5 +134,23 @@ const questions = [
             {text: "git pull", correct: false},
             {text: "git push origin main", correct: false},
             {text: "git checkout", correct:false}]
+    },
+    {
+        question: "How can one check if the branch they are working in is up to date?",
+        answers: [
+            {text: "git Status", correct: true},
+            {text: "git push", correct: false},
+            {text: "git pull origin main", correct: false},
+            {text: "git checkout", correct: false}]
+    },
+    {
+        question: "How many commits should one shoot for in there repository?",
+        answers: [
+            {text: "One", correct: false},
+            {text: "20-25", correct: true},
+            {text: "never commit", correct: false},
+            {text: "As manny as it takes", correct:false}]
     }
+
+
 ]
