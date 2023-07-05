@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
-    <script defer src="assets/logic.js"></script>
+    
     <title>Quiz App</title>
     <nav class="card">
-        <a href="#ViewHighscore">View highscores</a>
+        <a href="http://127.0.0.1:5500/highscores.html">View highscores</a>
     </nav>
     <h1>Welcome to my Quizz App</h1>
+    
 </head>
 <body>
     <div class="container">
@@ -24,6 +25,7 @@
         </div>
         <div class="controls">
             <button id ="start-btn" class="start-btn btn">Start</button>
+            
             <button id = "next-btn" class="next-btn btn hide">Next</button>
         </div>
       
@@ -31,9 +33,17 @@
     </div>
    
 </body>
+
 <aside class="hide" id= timer-container>
     <div class="timer-text"></div>
     <div class=" timer-count"></div>
 </aside>
+<footer class="hide" id="form">
+    <p>Hope you had fun!</p>
+    <textarea id="text" rows="1" cols="20">Input Initials</textarea>
+    <button id="submit"> Submit you score</button>
+</footer>
 
+<script  src="assets/logic.js"></script>
+<script src="assets/scores.js"></script>
 </html>

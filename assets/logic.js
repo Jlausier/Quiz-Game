@@ -41,7 +41,8 @@ const timerTextEl = document.querySelector('.timer-text')
 const questionEl = document.getElementById('question')
 const answersButtonEl = document.getElementById('answer-buttons')
 
-var timeLeft= 150
+var timeLeft= 100
+let score, timerInterval;
 
 
 let shuffleQuestions, currentQuestionIndex
@@ -64,13 +65,16 @@ startTimer()
 }
 
 function startTimer() {
-    setInterval(function(){
+     timerInterval = setInterval(function(){
         timeLeft--;
         timerTextEl.textContent = "Timer: " + timeLeft;
         timerContainerEl.classList.remove('hide')
         if(timeLeft === 0){
-            clearInterval();
+            score = 0
             inputHighscore();
+            clearInterval(timerInterval);
+            
+            resetState()
         }
     }, 1000);
     
@@ -120,10 +124,16 @@ function selectAnswer(e){
  })
  if(shuffleQuestions.length > currentQuestionIndex + 1){
     nextButton.classList.remove('hide')
- }else{
+ } else{
+    score = timeLeft
     inputHighscore()
+    clearInterval(timerInterval);
+    resetState()
+    
+ } 
+
  }
-}
+ 
 
 // change color when answer selected
 function setStatusClass(element, correct){

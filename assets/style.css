@@ -138,3 +138,20 @@ aside{
 
 }
 
+footer{
+    display: flex;
+    position: absolute;
+    align-items: center;
+   
+}
+
+footer p{
+    font-size: large;
+    font-weight: bold;
+    padding: 4px;
+    margin: 4px;
+}
+textarea{
+    padding: 4px;
+    margin: 20px;
+}
