@@ -16,8 +16,8 @@ function inputHighscore(){
 
 function userInfo(){
     var user = document.getElementById('text').value;
-    localStorage.setItem('score', score);
-    localStorage.setItem('user', user);
+    localStorage.setItem('score', JSON.stringify(score));
+    localStorage.setItem('user', JSON.stringify(user));
     clearStatusClass(document.body);
     startButton.classList.remove('hide');
     form.classList.add('hide');
@@ -29,7 +29,3 @@ function clearStatusClass(element){
     element.classList.remove('wrong')
 }
 
-
-function displayScores(){
-    
-}
