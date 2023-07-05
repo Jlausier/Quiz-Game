@@ -42,14 +42,14 @@ const answersButtonEl = document.getElementById('answer-buttons')
 
 let shuffleQuestions, currentQuestionIndex
 
-
+// added listner to start quiz
 startButton.addEventListener('click',startgame)
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     setNextQuestion()
 })
 
-
+// added function to hide start button on start and display questions randomly
 function startgame(){
 startButton.classList.add('hide')
 shuffleQuestions = questions.sort(() => Math.random()- .5)
@@ -57,14 +57,14 @@ currentQuestionIndex = 0
 questionContainerEl.classList.remove('hide')
 setNextQuestion()
 }
-
+//shows next question till there are none
 function setNextQuestion(){
     resetState()
     showQuestion(shuffleQuestions[currentQuestionIndex])
 
     }
 
-
+//function to set answer and qustion text
 function showQuestion(question){
 questionEl.innerText = question.question
 question.answers.forEach(answer => {
@@ -78,7 +78,7 @@ question.answers.forEach(answer => {
     answersButtonEl.appendChild(button)
     })
 }
-
+// reset body state per question
 function resetState(){
     clearStatusClass(document.body)
     nextButton.classList.add('hide')
@@ -88,7 +88,7 @@ function resetState(){
     }
 }
 
-
+// trigger when and answer is selected
 function selectAnswer(e){
  const selectedButton = e.target
  const correct = selectedButton.dataset.correct
@@ -98,14 +98,10 @@ function selectAnswer(e){
  })
  if(shuffleQuestions.length > currentQuestionIndex + 1){
     nextButton.classList.remove('hide')
- } else {
-    startButton.innerText = "Restart"
-    startButton.classList.remove('hide')
  }
- 
 }
 
-
+// change color when answer selected
 function setStatusClass(element, correct){
     clearStatusClass(element)
     if (correct) {
@@ -114,14 +110,13 @@ function setStatusClass(element, correct){
         element.classList.add('wrong')
     }
 }
-
-
+// reset colors
 function clearStatusClass(element){
     element.classList.remove('correct')
     element.classList.remove('wrong')
 }
 
-
+// object with all the questions
 const questions = [
     {
         question: "What is the tree called where we can interact with the entire webpage?" ,
