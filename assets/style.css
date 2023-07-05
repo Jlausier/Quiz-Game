@@ -116,3 +116,25 @@ nav a{
 .hide{
     display: none;
 }
+
+
+aside{
+    display: inline-flex;
+    align-items: center;
+    position: absolute;
+    top: 47%;
+    right: 20%;
+    border: 4px solid black;
+    width: 200px;
+}
+.timer-text{
+    font-size: 200%;
+    padding: 4%;
+
+}
+
+.timer-count{
+   font-size: 200%;
+
+}
+

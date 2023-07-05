@@ -35,10 +35,14 @@
 const startButton = document.getElementById('start-btn')
 const nextButton = document.getElementById('next-btn')
 const questionContainerEl = document.getElementById('question-container')
-
+const timerContainerEl = document.getElementById('timer-container')
+const timerTextEl = document.querySelector('.timer-text')
 
 const questionEl = document.getElementById('question')
 const answersButtonEl = document.getElementById('answer-buttons')
+
+var timeLeft= 150
+
 
 let shuffleQuestions, currentQuestionIndex
 
@@ -56,6 +60,21 @@ shuffleQuestions = questions.sort(() => Math.random()- .5)
 currentQuestionIndex = 0
 questionContainerEl.classList.remove('hide')
 setNextQuestion()
+startTimer()
+}
+
+function startTimer() {
+    setInterval(function(){
+        timeLeft--;
+        timerTextEl.textContent = "Timer: " + timeLeft;
+        timerContainerEl.classList.remove('hide')
+        if(timeLeft === 0){
+            clearInterval();
+            inputHighscore();
+        }
+    }, 1000);
+    
+    
 }
 //shows next question till there are none
 function setNextQuestion(){
@@ -73,10 +92,13 @@ question.answers.forEach(answer => {
     button.classList.add('btn')
     if (answer.correct){
        button.dataset.correct =answer.correct
-    }
+    } 
     button.addEventListener('click', selectAnswer)
     answersButtonEl.appendChild(button)
-    })
+
+   
+    }
+    )
 }
 // reset body state per question
 function resetState(){
@@ -98,6 +120,8 @@ function selectAnswer(e){
  })
  if(shuffleQuestions.length > currentQuestionIndex + 1){
     nextButton.classList.remove('hide')
+ }else{
+    inputHighscore()
  }
 }
 
@@ -108,6 +132,8 @@ function setStatusClass(element, correct){
         element.classList.add('correct')
     } else {
         element.classList.add('wrong')
+       
+        
     }
 }
 // reset colors
@@ -144,7 +170,7 @@ const questions = [
             {text: "git checkout", correct: false}]
     },
     {
-        question: "How many commits should one shoot for in there repository?",
+        question: "How many commits should one shoot for in their repository?",
         answers: [
             {text: "One", correct: false},
             {text: "20-25", correct: true},
