@@ -97,6 +97,7 @@ question.answers.forEach(answer => {
     if (answer.correct){
        button.dataset.correct =answer.correct
     } 
+    
     button.addEventListener('click', selectAnswer)
     answersButtonEl.appendChild(button)
 
@@ -117,11 +118,17 @@ function resetState(){
 // trigger when and answer is selected
 function selectAnswer(e){
  const selectedButton = e.target
- const correct = selectedButton.dataset.correct
- setStatusClass(document.body, correct)
+ const corrects = selectedButton.dataset.correct
+ setStatusClass(document.body, corrects)
  Array.from(answersButtonEl.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
  })
+ console.log(selectedButton);
+ console.log(corrects);
+ if (!corrects){
+    timeLeft -= 10;
+ }
+
  if(shuffleQuestions.length > currentQuestionIndex + 1){
     nextButton.classList.remove('hide')
  } else{
@@ -133,6 +140,7 @@ function selectAnswer(e){
  } 
 
  }
+ 
  
 
 // change color when answer selected

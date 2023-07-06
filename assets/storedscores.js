@@ -1,16 +1,16 @@
-
-var scoreList = document.getElementById('score-list')
-var highScores = [];
-
-    for (var i =0; i< highScores.length; i++){
-        
+    let initials = (JSON.parse(localStorage.getItem('username')));
+    let storedscore = (JSON.parse(localStorage.getItem('highscore')));
+    localStorage.getItem('highscore')
     
-    var li = document.createElement("li")
-    li.textContent = user + ":" + score;
-    li.setAttribute("data-index", i)
-    scoreList.appendChild(li)
+    let userScore = [];
+    
+    function displayScores(){
+        
+
+        
     }
-
-
- 
     displayScores()
+    
+    
+    console.log(initials);
+    console.log(storedscore);

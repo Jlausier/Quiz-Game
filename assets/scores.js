@@ -1,6 +1,7 @@
 var userScore = score
 var form = document.getElementById('form')
 var submitInfo = document.getElementById('submit')
+var finaleMessg = document.getElementById('finale')
 
 
 
@@ -10,19 +11,27 @@ function inputHighscore(){
    form.classList.remove('hide');
    submitInfo.addEventListener('click',userInfo);
    timerContainerEl.classList.add('hide');
+   finaleMessg.innerText =  "your final score was: " + score
    
 
 }
 
 function userInfo(){
+    
     var user = document.getElementById('text').value;
-    localStorage.setItem('score', JSON.stringify(score));
-    localStorage.setItem('user', JSON.stringify(user));
     clearStatusClass(document.body);
     startButton.classList.remove('hide');
     form.classList.add('hide');
     timeLeft = 100
+localStorage.setItem('username',JSON.stringify(user));
+
+localStorage.setItem('highscore',JSON.stringify(score));
+    console.log(user);
+    console.log(score);
+    console.log(JSON.parse(localStorage.getItem('username')));
 }
+
+
 
 function clearStatusClass(element){
     element.classList.remove('correct')
