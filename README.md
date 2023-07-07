@@ -9,4 +9,4 @@ https://jlausier.github.io/Quiz-Game/
 
 ## ScreenShot
 
-![Screenshot](assets\127.0.0.1_5500_index.html.png)
+![Screenshot](./assets/127.0.0.1_5500_index.html.png)
