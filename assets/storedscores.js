@@ -26,9 +26,9 @@ let storedscore = (JSON.parse(localStorage.getItem('highscore')));
         
     }
     displayScores()
-    if (initials ===''){
+    
         scoreList.classList.remove('hide')
-    }
+    
        
     
     console.log(initials);
