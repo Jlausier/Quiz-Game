@@ -23,12 +23,12 @@ function userInfo(){
     startButton.classList.remove('hide');
     form.classList.add('hide');
     timeLeft = 100
-localStorage.setItem('username',JSON.stringify(user));
+localStorage.setItem(user,JSON.stringify(score));
 
 localStorage.setItem('highscore',JSON.stringify(score));
     console.log(user);
     console.log(score);
-    console.log(JSON.parse(localStorage.getItem('username')));
+    console.log(JSON.parse(localStorage.getItem(user)));
 }
 
 

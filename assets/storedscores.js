@@ -1,23 +1,30 @@
-let initials = (JSON.parse(localStorage.getItem('username')));
-let storedscore = (JSON.parse(localStorage.getItem('highscore')));
+let initials = (JSON.parse(localStorage.getItem(user)));
+//let storedscore = (JSON.parse(localStorage.getItem('highscore')));
     
     
     let userScore = [];
-    let yourScore = [];
+    //let yourScore = [];
     
     const scoreList = document.getElementById('score-list')
 
     function displayScores(){
 
+        for (var i = 0; i < localStorage.length; i++) {
+            var init = localStorage.key(i);
+            var score = localStorage.getItem(key);
+            console.log("Stored Key: " + init + ", Stored Value: " + score);
+            userScore.push(init, score)
+          }
+
+
         
-        userScore.push(initials)
-        yourScore.push(storedscore)
+        //yourScore.push(storedscore)
        
 
 
         for (let index = 0; index < userScore.length; index++) {
             uselist= document.createElement('li')
-            uselist.innerHTML = initials + ' score : ' + storedscore
+            uselist.innerHTML = initials 
             scoreList.appendChild(uselist)
             
         } 
