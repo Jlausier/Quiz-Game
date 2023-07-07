@@ -24,17 +24,17 @@ let initials = (JSON.parse(localStorage.getItem(user)));
 
         for (let index = 0; index < userScore.length; index++) {
             uselist= document.createElement('li')
-            uselist.innerHTML = initials 
+            uselist.innerHTML = init + 'score: ' + score;
             scoreList.appendChild(uselist)
             
         } 
         
-
+        scoreList.classList.remove('hide')
         
     }
     displayScores()
     
-        scoreList.classList.remove('hide')
+        
     
        
     
